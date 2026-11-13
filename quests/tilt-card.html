@@ -1,0 +1,11 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="quest.css"><title>Tilt card | Side quest</title></head><body>
+<header class="quest-bar"><a href="../index.html#quests">Back to portfolio</a><span>Side quest: Tilt card</span></header>
+<main class="stage"><h1>Tilt card</h1>
+<p>Move your pointer (or finger) over the card. JavaScript turns its position into a 3D tilt.</p>
+<div class="tilt" id="tilt"><h2>Hover over me</h2><p>The card tilts toward the pointer and settles back when you leave.</p></div></main>
+<script>
+const c=document.getElementById("tilt");
+if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
+c.onpointermove=e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.setProperty("--ry",x*18+"deg");c.style.setProperty("--rx",-y*18+"deg")};
+c.onpointerleave=()=>{c.style.setProperty("--rx","0deg");c.style.setProperty("--ry","0deg")}}
+</script></body></html>

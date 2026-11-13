@@ -1,0 +1,11 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="quest.css"><title>Live greeting | Side quest</title></head><body>
+<header class="quest-bar"><a href="../index.html#quests">Back to portfolio</a><span>Side quest: Live greeting</span></header>
+<main class="stage"><h1>Live greeting</h1>
+<p>My first piece of JavaScript: the page reacts on every keystroke.</p>
+<label class="sr" for="n" style="position:absolute;left:-9999px">Your name</label>
+<input class="hello" id="n" placeholder="Type your name" autocomplete="off">
+<p class="big-out" id="out" aria-live="polite">Hello, stranger.</p></main>
+<script>
+const o=document.getElementById("out");
+document.getElementById("n").oninput=e=>{const v=e.target.value.trim();o.textContent=v?`Hello, ${v}.`:"Hello, stranger."};
+</script></body></html>

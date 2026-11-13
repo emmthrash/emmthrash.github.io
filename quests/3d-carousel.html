@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="quest.css"><title>3D carousel | Side quest</title></head><body>
+<header class="quest-bar"><a href="../index.html#quests">Back to portfolio</a><span>Side quest: 3D carousel</span></header>
+<main class="stage"><h1>3D carousel</h1>
+<p>Eight tiles placed around a circle with <code>rotateY</code> and <code>translateZ</code>, then spun as one group.</p>
+<div class="ring-scene" aria-hidden="true"><div class="ring" id="ring">
+<span style="--i:0">Flutter</span><span style="--i:1">Dart</span><span style="--i:2">Linux</span><span style="--i:3">Networking</span><span style="--i:4">IoT</span><span style="--i:5">Git</span><span style="--i:6">HTML + CSS</span><span style="--i:7">JavaScript</span></div></div>
+<div class="controls"><button class="button secondary" id="pause">Pause</button><label>Speed <input type="range" id="speed" min="6" max="40" value="26"> </label></div></main>
+<script>
+const ring=document.getElementById("ring"),b=document.getElementById("pause");
+document.getElementById("speed").oninput=e=>ring.style.animationDuration=(46-e.target.value)+"s";
+if(matchMedia("(prefers-reduced-motion: reduce)").matches){ring.style.animationPlayState="paused";b.textContent="Play"}
+b.onclick=()=>{const p=ring.style.animationPlayState==="paused";ring.style.animationPlayState=p?"running":"paused";b.textContent=p?"Pause":"Play"};
+</script></body></html>
