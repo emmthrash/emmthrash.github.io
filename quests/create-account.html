@@ -1,0 +1,24 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="quest.css"><title>Create account | Side quest</title></head><body>
+<header class="quest-bar"><a href="../index.html#quests">Back to portfolio</a><span>Side quest: Create account</span></header>
+<main class="stage"><h1>Create account</h1>
+<p>The sign-up half of the login. It checks your input in the browser, and nothing is sent or saved.</p>
+<div class="auth one"><form class="panel" id="f"><h2>Sign up</h2>
+<div class="field"><input id="n" type="text" placeholder=" " autocomplete="name" required><label for="n">Full name</label></div>
+<div class="field"><input id="e" type="email" placeholder=" " autocomplete="email" required><label for="e">Email</label></div>
+<div class="field"><input id="p" type="password" placeholder=" " minlength="8" autocomplete="new-password" required><label for="p">Password (8+ characters)</label><button class="peek" type="button" aria-label="Show passwords">Show</button></div>
+<div class="meter" aria-hidden="true"><i id="bar"></i></div><p class="hint" id="lab" aria-live="polite"></p>
+<div class="field"><input id="c" type="password" placeholder=" " autocomplete="new-password" required><label for="c">Confirm password</label></div>
+<label class="check"><input type="checkbox" required> I understand this is a demo and I won't enter a real password.</label>
+<button class="button primary">Create account</button>
+<p class="switch">Already have an account? <a href="animated-login.html">Log in</a></p></form></div>
+<p class="msg" id="msg" role="status"></p></main>
+<script>
+const f=document.getElementById("f"),p=document.getElementById("p"),c=document.getElementById("c"),bar=document.getElementById("bar"),lab=document.getElementById("lab"),pk=f.querySelector(".peek"),m=document.getElementById("msg");
+const L=["","Weak","Weak","Okay","Good","Strong"],C=["","#ff5a6e","#ff5a6e","#ffd84d","#39ff88","#39ff88"];
+function score(v){let s=0;if(v.length>=8)s++;if(v.length>=12)s++;if(/[a-z]/.test(v)&&/[A-Z]/.test(v))s++;if(/\d/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;return s}
+function check(){const s=p.value?score(p.value):0;bar.style.setProperty("--p",s*20+"%");bar.style.setProperty("--c",C[s]||"");lab.textContent=p.value?"Strength: "+L[s]:"";c.setCustomValidity(c.value&&c.value!==p.value?"Passwords do not match":"")}
+p.oninput=c.oninput=check;
+pk.onclick=()=>{const s=p.type==="password";p.type=c.type=s?"text":"password";pk.textContent=s?"Hide":"Show"};
+f.onsubmit=e=>{e.preventDefault();m.textContent="Form is valid. This is a demo, so no account was created.";f.reset();check()};
+</script>
+</body></html>

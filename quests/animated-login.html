@@ -1,19 +1,16 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="quest.css"><title>Animated login | Side quest</title></head><body>
 <header class="quest-bar"><a href="../index.html#quests">Back to portfolio</a><span>Side quest: Animated login</span></header>
 <main class="stage"><h1>Animated login</h1>
-<p>A sliding log in / register card with floating labels. It is a UI demo: nothing is sent or saved.</p>
-<div class="auth" id="auth"><div class="track">
-<form class="panel" id="p1"><h2>Log in</h2>
-<div class="field"><input id="e1" type="email" placeholder=" " required><label for="e1">Email</label></div>
-<div class="field"><input id="w1" type="password" placeholder=" " required><label for="w1">Password</label></div>
-<button class="button primary">Log in</button><p class="switch">New here? <a href="#" data-go="reg">Create an account</a></p></form>
-<form class="panel" id="p2" inert><h2>Register</h2>
-<div class="field"><input id="n2" type="text" placeholder=" " required><label for="n2">Name</label></div>
-<div class="field"><input id="e2" type="email" placeholder=" " required><label for="e2">Email</label></div>
-<button class="button primary">Create account</button><p class="switch">Have an account? <a href="#" data-go="login">Log in</a></p></form>
-</div></div><p class="msg" id="msg" role="status"></p></main>
+<p>A glowing log in card with floating labels. It is a UI demo: nothing is sent or saved.</p>
+<div class="auth one"><form class="panel" id="f"><h2>Log in</h2>
+<div class="field"><input id="e" type="email" placeholder=" " autocomplete="email" required><label for="e">Email</label></div>
+<div class="field"><input id="w" type="password" placeholder=" " autocomplete="current-password" required><label for="w">Password</label><button class="peek" type="button" aria-label="Show password">Show</button></div>
+<button class="button primary">Log in</button>
+<p class="switch">New here? <a href="create-account.html">Create an account</a></p></form></div>
+<p class="msg" id="msg" role="status"></p></main>
 <script>
-const a=document.getElementById("auth"),p1=document.getElementById("p1"),p2=document.getElementById("p2"),m=document.getElementById("msg");
-document.querySelectorAll("[data-go]").forEach(l=>l.onclick=e=>{e.preventDefault();const r=l.dataset.go==="reg";a.classList.toggle("reg",r);p1.inert=r;p2.inert=!r;m.textContent="";(r?p2:p1).querySelector("input").focus()});
-[p1,p2].forEach(f=>f.onsubmit=e=>{e.preventDefault();m.textContent="Looks good. This is a demo, so nothing was sent.";f.reset()});
-</script></body></html>
+const f=document.getElementById("f"),w=document.getElementById("w"),pk=f.querySelector(".peek"),m=document.getElementById("msg");
+pk.onclick=()=>{const s=w.type==="password";w.type=s?"text":"password";pk.textContent=s?"Hide":"Show"};
+f.onsubmit=e=>{e.preventDefault();m.textContent="Looks good. This is a demo, so nothing was sent.";f.reset()};
+</script>
+</body></html>
